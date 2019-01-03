@@ -78,14 +78,14 @@ void affichage_menue(void)
 void affichage_regle(void)
 {
 	printf(" \n\n*** Regle ***\n\n");
-	printf("* e allez en haut  \n");
-	printf("* d allez en bas  \n");
-	printf("* f allez à droite \n");
-	printf("* s allez à gauche \n");
+	printf("* e aller en haut  \n");
+	printf("* d aller en bas  \n");
+	printf("* f aller à droite \n");
+	printf("* s aller à gauche \n");
 	printf("* Si tu manges un + ton serpent grandira de 1 \n");
 	printf("mais si tu mange un ~ il retrecira de 1 \n");
-	printf(" * Si la tete de ton serpent touche un bors \n");
-	printf("du plaetau ou sa propre queue tu meurs\n\n\n");
+	printf(" * Si la tete de ton serpent touche un bord\n");
+	printf("du plateau ou sa propre queue tu meurs\n\n\n");
 }
 
 int alea(int a, int b) 
@@ -342,6 +342,8 @@ void avance(int board[TAILLE][TAILLE], int  *taille)
 
 int main(void)
 {
+
+	
 	char key='t';
 	int taille_serpent, orientation= HAUT, mort =0;
 	int * taille_s = &taille_serpent;
@@ -352,11 +354,10 @@ int main(void)
 	char choix;
 	int plateau[TAILLE][TAILLE];
 	
-	
 	initialisation_board(plateau);
 	placer_serpent_depart(plateau);
 
-	
+	lire_score(liste_score);
 	
 	do
 	{
@@ -401,16 +402,19 @@ int main(void)
 	
 		}while( (key != 'q') && (mort != 1) );
 		
+		
+	
 		//Ajout (eventuel) du score
 
 		SCORE* score = (SCORE*)malloc(sizeof(SCORE));
 
 		score->taille_serpent = *taille_s;
 		strcpy(score->pseudo,pseudo);
-
 		ajoute_score(liste_score, score);
-
 		
+		// remplissage des fichiers
+			ecrire_score(liste_score);
+	
 	}
 	else if (choix == '2') // score
 	{
