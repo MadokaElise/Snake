@@ -72,7 +72,7 @@ void affichage_menue(void)
 	printf(" *** MENUE ***\n\n");
 	printf("  1 Jouer @000 \n");
 	printf("  2 Voir Score \n");
-	printf("  3 voir les regle \n");
+	printf("  3 voir les regles \n");
 	printf("  q JE VEUX QUITTER !\n");
 }
 void affichage_regle(void)
